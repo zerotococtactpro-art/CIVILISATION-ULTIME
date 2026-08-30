@@ -1,0 +1,43 @@
+name: Build Civilisation Ultimate
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build Civilisation Ultimate - Java 25
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le projet
+        uses: actions/checkout@v4
+
+      - name: Installer Java 25
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+
+      - name: Installer Gradle 9.1
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.1.0'
+
+      - name: Compiler le plugin
+        run: |
+          gradle --no-daemon clean build
+
+      - name: Vérifier le JAR
+        run: |
+          echo "===== JAR GÉNÉRÉ ====="
+          ls -lah build/libs/*.jar
+
+      - name: Envoyer le JAR dans Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: CivilisationUltimate-Java25
+          path: build/libs/*.jar
+          if-no-files-found: error
