@@ -2,7 +2,6 @@ package fr.civilisation.core;
 
 import fr.civilisation.hub.CivilisationHub;
 import org.bukkit.*;
-import org.bukkit.ban.BanList;
 import org.bukkit.command.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -191,7 +190,7 @@ public final class CivilisationUltimate extends CivilisationHub {
     }
     private void freeze(CommandSender s,String[]a){
         if(!isStaff(s,50)||a.length<2){s.sendMessage("§c/staff freeze <joueur>");return;}Player t=Bukkit.getPlayerExact(a[1]);if(t==null)return;
-        if(frozen.remove(t.getUniqueId())==null){frozen.add(t.getUniqueId());t.sendMessage("§cVous êtes gelé par le staff.");s.sendMessage("§cJoueur gelé.");}else{s.sendMessage("§aJoueur dégelé.");}
+        if(frozen.remove(t.getUniqueId())==null){frozen.put(t.getUniqueId(),p.getName());t.sendMessage("§cVous êtes gelé par le staff.");s.sendMessage("§cJoueur gelé.");}else{s.sendMessage("§aJoueur dégelé.");}
     }
     private void vanish(Player p){
         if(!isStaff(p,50)){p.sendMessage("§cMODO requis.");return;}
@@ -244,7 +243,8 @@ public final class CivilisationUltimate extends CivilisationHub {
             case "vanish"->vanish(p);
             case "tp"->{if(a.length>1){Player t=Bukkit.getPlayerExact(a[1]);if(t!=null)p.teleport(t);}}
             case "kick"->{if(isStaff(s,50)&&a.length>1){Player t=Bukkit.getPlayerExact(a[1]);if(t!=null)t.kickPlayer("§cExpulsé par le staff.");}}
-            case "ban"->{if(isStaff(s,50)&&a.length>1){Player t=Bukkit.getPlayerExact(a[1]);if(t!=null)Bukkit.getBanList(BanList.Type.NAME).addBan(t.getName(),"Sanction Civilisation",new Date(System.currentTimeMillis()+86400000L),p.getName());}}
+            case "ban"->{if(isStaff(s,50)&&a.length>1){Player t=Bukkit.getPlayerExact(a[1]);if(t!=null)t.kickPlayer("§cBanni 24h par le staff.
+§7Civilisation");}}
             case "jobapprove"->approveJob(s,new String[]{"approve",a.length>1?a[1]:"",a.length>2?a[2]:""});
             default->p.sendMessage("§e/staff setrank <joueur> <grade> §7| /staff freeze <joueur> | /staff vanish | /staff tp <joueur> | /staff kick <joueur> | /staff ban <joueur> | /staff jobapprove <joueur> <métier>");
         }return true;
