@@ -1,0 +1,20 @@
+hub-world: hub
+force-hub-on-join: true
+hub-radius: 100
+protect-hub: true
+build-city-on-first-start: true
+
+hub-spawn:
+  x: 0
+  y: 82
+  z: 0
+  yaw: 180
+  pitch: 0
+
+civilisation-spawn:
+  world: world
+  x: 0
+  y: 80
+  z: 0
+  yaw: 0
+  pitch: 0

@@ -1,0 +1,29 @@
+name: CivilisationUltimate
+version: 1.0.0
+main: fr.civilisation.core.CivilisationUltimate
+api-version: '26.2'
+author: Civilisation RP
+description: Core RP complet Civilisation
+commands:
+  civilisation:
+    description: Hub, monde RP et menu principal
+    aliases: [civ, civil]
+  banque:
+    description: Banque Civilisation (zone bancaire uniquement)
+  job:
+    description: Metiers et candidatures
+  parcelle:
+    description: Parcelles 4x4 chunks (64x64)
+  staff:
+    description: Panel staff et moderation
+  civadmin:
+    description: Administration avancée
+  pay:
+    description: Payer un joueur
+  eco:
+    description: Administration économique
+  securite:
+    description: Caméras, alarmes et coffres-forts RP
+permissions:
+  civilisation.admin:
+    default: op
