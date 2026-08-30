@@ -1,7 +1,7 @@
 plugins { java }
 
 group = "fr.civilisation"
-version = "1.0.0"
+version = "1.0.2"
 
 repositories {
     maven { name = "papermc"; url = uri("https://repo.papermc.io/repository/maven-public/") }
@@ -20,4 +20,4 @@ tasks.withType<JavaCompile>().configureEach {
     options.release.set(25)
 }
 
-tasks.jar { archiveFileName.set("CivilisationUltimate-1.0.0.jar") }
+tasks.jar { archiveFileName.set("CivilisationUltimate-1.0.2.jar") }

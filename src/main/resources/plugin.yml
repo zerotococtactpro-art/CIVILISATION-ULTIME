@@ -1,5 +1,5 @@
 name: CivilisationUltimate
-version: 1.0.1
+version: 1.0.2
 main: fr.civilisation.core.CivilisationUltimate
 api-version: '26.2'
 author: Civilisation RP
